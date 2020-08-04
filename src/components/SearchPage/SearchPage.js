@@ -17,7 +17,7 @@ class SearchPage extends Component {
 
   handleClick = () => {
     console.log('search query on click:', this.state.query)
-    // const query = this.state.query
+    const query = this.state.query
     // test api call to server from client
     // axios.get('/api/search').then((response)=>{
     //   console.log('back from GET:', response.data);
@@ -25,7 +25,7 @@ class SearchPage extends Component {
     //   console.log('error with GET', err);
     // })
     // get call using sagas and reduers
-    this.props.dispatch({type: 'SEARCH'})
+    this.props.dispatch({type: 'SEARCH', payload: query})
   }
 
   render() {

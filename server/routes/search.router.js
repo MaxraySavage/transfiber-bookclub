@@ -9,7 +9,7 @@ console.log('search API key:', process.env.GOOGLE_API_KEY)
  */
 router.get('/', (req, res) => {
   console.log('hit server');
-  axios.get(`https://www.googleapis.com/books/v1/volumes?q=afropessimism&key=${process.env.GOOGLE_API_KEY}`)
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.search}&key=${process.env.GOOGLE_API_KEY}`)
       .then((response)=>{
           console.log('sending back:', response.data)
           res.send(response.data);

@@ -1,7 +1,7 @@
-const loginMode = (state = [], action) => {
+const searchResults = (state = [], action) => {
   switch (action.type) {
     case 'SET_SEARCH_RESULTS':
-      return state;
+      return action.payload;
     default:
       return state;
   }
@@ -17,5 +17,5 @@ const loginMode = (state = [], action) => {
 
 // loginMode will be on the redux state at:
 // state.loginMode
-  export default loginMode;
+  export default searchResults;
   

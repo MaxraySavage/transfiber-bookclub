@@ -5,7 +5,7 @@ import axios from 'axios';
 function* searchBooks(action) {
   try {
     // get call to Google Books API with query from client
-    const response = yield axios.get('/api/search');
+    const response = yield axios.get('/api/search', {params: {search: action.payload}});
 
     // perform put to return data from server    
     yield put({type: 'SET_SEARCH_RESULTS', payload: response.data.items});
