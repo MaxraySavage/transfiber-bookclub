@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class SearchResults extends Component {
 
   viewDetails = (event, data) => {
     event.preventDefault();
     console.log('viewDetails button clicked with book id:', data);
+    this.props.dispatch({type: 'DETAILS', payload: data})
+    this.props.history.replace(`details`);
   }
 
 
@@ -14,7 +17,7 @@ class SearchResults extends Component {
       <div>
         Search Results:
         {/* {JSON.stringify(this.props.state.searchResults)} */}
-        {this.props.state.searchResults.map((book, index)=>{
+        {this.props.reduxState.searchResults.map((book, index)=>{
           const item = book.volumeInfo
            return <div key={index}>
              <p>{JSON.stringify(item)}</p>
@@ -28,8 +31,8 @@ class SearchResults extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  state
+const mapStateToProps = (reduxState) => ({
+  reduxState
 });
 
-export default connect(mapStateToProps)(SearchResults);
+export default withRouter(connect(mapStateToProps)(SearchResults));

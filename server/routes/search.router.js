@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
   console.log('hit server');
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.search}&key=${process.env.GOOGLE_API_KEY}`)
       .then((response)=>{
-          console.log('sending back:', response.data)
+          // console.log('sending back:', response.data)
           res.send(response.data);
       })
       .catch((error)=>{
@@ -20,12 +20,12 @@ router.get('/', (req, res) => {
       })
 })
 
-const bookId = 'ia7xAwAAQBAJ';
-router.get('/:id', (req, res) => {
+// const bookId = 'ia7xAwAAQBAJ';
+router.get('/details/:id', (req, res) => {
   console.log('hit server with id:', req.params.id);
-  axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=${process.env.GOOGLE_API_KEY}`)
+  axios.get(`https://www.googleapis.com/books/v1/volumes/${req.params.id}?key=${process.env.GOOGLE_API_KEY}`)
       .then((response)=>{
-          console.log('sending back ID get:', response.data)
+          // console.log('sending back ID get:', response.data)
           res.send(response.data);
       })
       .catch((error)=>{

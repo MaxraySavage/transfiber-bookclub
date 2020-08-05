@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class ResultDetails extends Component {
 
@@ -7,6 +8,7 @@ class ResultDetails extends Component {
     return (
       <div>
         <h1>Search Result Details</h1>
+        {JSON.stringify(this.props.state.resultDetails.volumeInfo)}
       </div>
     );
   }
@@ -16,4 +18,4 @@ const mapStateToProps = (state) => ({
   state
 });
 
-export default connect(mapStateToProps)(ResultDetails);
+export default withRouter(connect(mapStateToProps)(ResultDetails));

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 
 class SearchPage extends Component {
@@ -22,7 +22,7 @@ class SearchPage extends Component {
     console.log('search query on click:', this.state.query)
     const query = this.state.query
     this.props.dispatch({type: 'SEARCH', payload: query})
-    this.props.history.push('search');
+    this.props.history.replace('search');
     
   }
 
