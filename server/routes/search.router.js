@@ -15,7 +15,21 @@ router.get('/', (req, res) => {
           res.send(response.data);
       })
       .catch((error)=>{
-          console.log('error getting trending', error);
+          console.log('error with / get', error);
+          res.sendStatus(500);
+      })
+})
+
+const bookId = 'ia7xAwAAQBAJ';
+router.get('/:id', (req, res) => {
+  console.log('hit server with id:', req.params.id);
+  axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}?key=${process.env.GOOGLE_API_KEY}`)
+      .then((response)=>{
+          console.log('sending back ID get:', response.data)
+          res.send(response.data);
+      })
+      .catch((error)=>{
+          console.log('error getting /details get', error);
           res.sendStatus(500);
       })
 })

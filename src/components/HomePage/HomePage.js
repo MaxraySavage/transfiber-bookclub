@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SearchPage from '../SearchPage/SearchPage';
-import SearchResults from '../SearchResults/SearchResults';
 
 class HomePage extends Component {
-
+  
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     return (
@@ -13,8 +11,6 @@ class HomePage extends Component {
         {/* <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
         <LogOutButton className="log-in" /> */}
-        <SearchPage/>
-        <SearchResults/>
       </div>
     );
   }

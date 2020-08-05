@@ -5,7 +5,7 @@ class SearchResults extends Component {
 
   viewDetails = (event, data) => {
     event.preventDefault();
-    console.log('viewDetails button clicked with book item data:', data);
+    console.log('viewDetails button clicked with book id:', data);
   }
 
 
@@ -18,7 +18,9 @@ class SearchResults extends Component {
           const item = book.volumeInfo
            return <div key={index}>
              <p>{JSON.stringify(item)}</p>
-             <button onClick={ (event) => this.viewDetails(event, item) }>view details</button>
+             {/* Clicking this button navigates to the details page for the individual book item */}
+             <button onClick={ (event) => this.viewDetails(event, book.id) }>view details</button>
+             {/* <Link to="/details/:id">Details for id number 47</Link> */}
              </div>
           })}
       </div>

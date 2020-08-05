@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
+import { withRouter} from 'react-router-dom';
+
 
 class SearchPage extends Component {
-
+  componentDidMount(){
+    
+  }
   state = {
     query: ''
   }
@@ -18,14 +21,9 @@ class SearchPage extends Component {
   handleClick = () => {
     console.log('search query on click:', this.state.query)
     const query = this.state.query
-    // test api call to server from client
-    // axios.get('/api/search').then((response)=>{
-    //   console.log('back from GET:', response.data);
-    // }).catch((err)=>{
-    //   console.log('error with GET', err);
-    // })
-    // get call using sagas and reduers
     this.props.dispatch({type: 'SEARCH', payload: query})
+    this.props.history.push('search');
+    
   }
 
   render() {
@@ -42,4 +40,4 @@ const mapStateToProps = (state) => ({
   state
 });
 
-export default connect(mapStateToProps)(SearchPage);
+export default withRouter(connect(mapStateToProps)(SearchPage));
