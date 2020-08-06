@@ -8,7 +8,7 @@ class SearchResults extends Component {
     event.preventDefault();
     console.log('viewDetails button clicked with book id:', data);
     this.props.dispatch({type: 'DETAILS', payload: data})
-    this.props.history.replace(`details`);
+    this.props.history.replace(`details/${data}`);
   }
 
 
@@ -23,6 +23,7 @@ class SearchResults extends Component {
              <p>{JSON.stringify(item)}</p>
              {/* Clicking this button navigates to the details page for the individual book item */}
              <button onClick={ (event) => this.viewDetails(event, book.id) }>view details</button>
+             {/* <button><Link to="details">view details</Link></button> */}
              {/* <Link to="/details/:id">Details for id number 47</Link> */}
              </div>
           })}

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {
   HashRouter as Router,
   Route,
-  // Redirect,
+  Redirect,
   Switch,
 } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ class App extends Component {
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-            {/* <Redirect exact from="/" to="/home" /> */}
+            <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             {/* <Route
@@ -47,9 +47,9 @@ class App extends Component {
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
-            <Route exact path="/" component={HomePage}/>
-            <Route path="/search" component={HomePage}/>
-            <Route exact path="/details" component={ResultDetails}/>
+            <Route exact path="/home" component={HomePage}/>
+            {/* <Route path="/search" component={HomePage}/> */}
+            <Route exact path="/details/:id" component={ResultDetails}/>
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <Route exact path="/login" component={LoginPage}/>
