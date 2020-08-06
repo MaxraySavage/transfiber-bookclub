@@ -13,7 +13,7 @@ class SearchResults extends Component {
   viewDetails = (event, data) => {
     event.preventDefault();
     console.log('viewDetails button clicked with book id:', data);
-    this.props.dispatch({type: 'DETAILS', payload: data})
+    // this.props.dispatch({type: 'DETAILS', payload: data})
     this.props.history.push(`/details/${data}`);
   }
 
@@ -27,7 +27,8 @@ class SearchResults extends Component {
         {this.props.reduxState.searchResults.map((book, index)=>{
           const item = book.volumeInfo
            return <div key={index}>
-             <p>{JSON.stringify(item)}</p>
+             {/* <p>{JSON.stringify(item)}</p> */}
+             <p>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}, {item.description}</p>
              {/* Clicking this button navigates to the details page for the individual book item */}
              <button onClick={ (event) => this.viewDetails(event, book.id) }>view details</button>
              {/* <button><Link to="details">view details</Link></button> */}
