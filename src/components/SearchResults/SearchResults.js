@@ -3,12 +3,18 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 
 class SearchResults extends Component {
+  componentDidMount(){
+    const queryString = this.props.history.location.pathname.split('/search/');
+    const query = queryString[1];
+    this.props.dispatch({type: 'SEARCH', payload: query})
+    // console.log('search query is', )
+  }
 
   viewDetails = (event, data) => {
     event.preventDefault();
     console.log('viewDetails button clicked with book id:', data);
     this.props.dispatch({type: 'DETAILS', payload: data})
-    this.props.history.replace(`details/${data}`);
+    this.props.history.push(`/details/${data}`);
   }
 
 

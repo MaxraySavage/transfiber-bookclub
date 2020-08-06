@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+// import SearchResults from '../SearchResults/SearchResults';
 
 class SearchPage extends Component {
-  componentDidMount(){
-    
-  }
+  
   state = {
     query: ''
   }
@@ -21,8 +20,8 @@ class SearchPage extends Component {
   handleClick = () => {
     console.log('search query on click:', this.state.query)
     const query = this.state.query
-    this.props.dispatch({type: 'SEARCH', payload: query})
-    // this.props.history.replace('search');
+    // this.props.dispatch({type: 'SEARCH', payload: query})
+    this.props.history.replace(`/search/${query}`);
     
   }
 
@@ -32,6 +31,7 @@ class SearchPage extends Component {
         <p>Input search here:</p>
         <input type="text" placeholder="search" onChange={this.handleChange}></input>
         <button onClick={this.handleClick}>Enter</button>
+        {/* {this.props.state.searchResults.length > 0 ? <SearchResults/> : ''} */}
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class AddBookForm extends Component {
 
@@ -18,4 +19,4 @@ const mapStateToProps = (reduxState) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(AddBookForm);
+export default withRouter(connect(mapStateToProps)(AddBookForm));
