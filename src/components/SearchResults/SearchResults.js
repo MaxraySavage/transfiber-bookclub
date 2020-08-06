@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class SearchResults extends Component {
 
@@ -16,6 +16,7 @@ class SearchResults extends Component {
     return (
       <div>
         Search Results:
+        If you can't find what you're looking for, <Link to="/form">Add A Book</Link>
         {/* {JSON.stringify(this.props.state.searchResults)} */}
         {this.props.reduxState.searchResults.map((book, index)=>{
           const item = book.volumeInfo

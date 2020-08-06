@@ -29,6 +29,7 @@ class SearchPage extends Component {
   render() {
     return (
       <div>
+        <p>Input search here:</p>
         <input type="text" placeholder="search" onChange={this.handleChange}></input>
         <button onClick={this.handleClick}>Enter</button>
       </div>
