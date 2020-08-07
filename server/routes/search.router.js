@@ -3,10 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {default: axios} = require('axios');
 
-console.log('search API key:', process.env.GOOGLE_API_KEY)
-/**
- * GET route template
- */
+// get results from the API
 router.get('/', (req, res) => {
   console.log('hit server with:', req.query);
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.search}&key=${process.env.GOOGLE_API_KEY}`)
@@ -19,8 +16,7 @@ router.get('/', (req, res) => {
           res.sendStatus(500);
       })
 })
-
-// const bookId = 'ia7xAwAAQBAJ';
+// get item details from API search results
 router.get('/details/:id', (req, res) => {
   console.log('hit server with id:', req.params.id);
   axios.get(`https://www.googleapis.com/books/v1/volumes/${req.params.id}?key=${process.env.GOOGLE_API_KEY}`)
@@ -32,6 +28,20 @@ router.get('/details/:id', (req, res) => {
           console.log('error getting /details get', error);
           res.sendStatus(500);
       })
+})
+
+// get results from database
+router.get('/db', (req, res) => {
+    console.log('searching database with:', req.query.search);
+    const queryText = `SELECT * FROM book WHERE title=$1;`
+    pool.query(queryText, [req.query.search])
+    .then(result => {
+        console.log('======>:', result.rows)
+        res.send(result.rows);
+    }).catch(error=>{
+        console.log('Error getting from database', error);
+        res.sendStatus(500);
+    })
 })
 
 /**

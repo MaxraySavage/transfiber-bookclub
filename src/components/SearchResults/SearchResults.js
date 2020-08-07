@@ -7,8 +7,10 @@ class SearchResults extends Component {
   componentDidMount(){
     const queryString = this.props.history.location.pathname.split('/search/');
     const query = queryString[1];
-    this.props.dispatch({type: 'SEARCH', payload: query})
-    // console.log('search query is', )
+    // search dispatch to API
+    this.props.dispatch({type: 'SEARCH_API', payload: query});
+    // search dispatch to Database
+    this.props.dispatch({type: 'SEARCH_DB', payload: query});
   }
 
   viewDetails = (event, data) => {
@@ -26,8 +28,9 @@ class SearchResults extends Component {
         {this.props.reduxState.user.username ?
         <Link to="/form">Not finding what you're looking for? Add A Book</Link>
         : ''}
+        {JSON.stringify(this.props.reduxState.databaseResults)}
         {/* renders search results */}
-        {this.props.reduxState.searchResults.map((book, index)=>{
+        {this.props.reduxState.apiResults.map((book, index)=>{
           // select expected data from object and assign to variable 'item'
           const item = book.volumeInfo
            return (
