@@ -6,8 +6,9 @@ class CollectionItem extends Component {
 
   removeFromCollection = () => {
     const book = this.props.book
-    this.props.dispatch({type:'REMOVE_FROM_COLLECTION', payload: [book.book_id, this.props.reduxState.user.id]})
-    window.location.reload(false);
+    // this.props.dispatch({type:'REMOVE_FROM_COLLECTION', payload: [book.book_id, this.props.reduxState.user.id]})
+    this.props.dispatch({type: 'REMOVE_FROM_COLLECTION', payload: book.book_id})
+    // window.location.reload(false);
   }
 
   render() {
