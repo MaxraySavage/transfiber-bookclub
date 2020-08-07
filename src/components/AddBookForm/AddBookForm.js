@@ -8,7 +8,7 @@ class AddBookForm extends Component {
     title: '',
     author: '',
     publisher: '',
-    publishDate: '',
+    publishedDate: '',
     description: '',
     pageCount: '',
     imgUrl: ''
@@ -34,7 +34,7 @@ class AddBookForm extends Component {
       break;
       case 'publish-date':
         this.setState({
-          publishDate: event.target.value
+          publishedDate: event.target.value
         });
       break;
       case 'description':

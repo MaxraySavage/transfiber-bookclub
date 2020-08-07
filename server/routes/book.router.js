@@ -49,9 +49,14 @@ router.get('/db', (req, res) => {
  */
 router.post('/', (req, res) => {
     console.log('update attempt:', req.body)
-    const queryText = `INSERT INTO "book" ("title", "author", "publisher", "publish_date", "description", "page_count", "img_url")
-    VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-    pool.query(queryText, [req.body.title, req.body.author, req.body.publisher, req.body.publishDate, req.body.description, req.body.pageCount, req.body.imgUrl])
+    const queryText = `WITH ins1 AS (
+        INSERT INTO "book" ("api_id", "title", "author", "publisher", "publish_date", "description", "page_count", "img_url")
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            RETURNING id
+        )
+        INSERT INTO "collection" (book_id, user_id)
+            VALUES ((SELECT id FROM ins1), $9);`;
+    pool.query(queryText, [req.body.api_id, req.body.title, req.body.author, req.body.publisher, req.body.publishedDate, req.body.description, req.body.pageCount, req.body.imgUrl, req.body.user_id])
     .then(response => {
         res.sendStatus(200);
     }).catch( error => {
@@ -59,5 +64,6 @@ router.post('/', (req, res) => {
         res.sendStatus( 500 );
     })
   })
+
 
 module.exports = router;

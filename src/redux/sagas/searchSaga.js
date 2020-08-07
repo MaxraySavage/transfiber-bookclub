@@ -5,7 +5,7 @@ import axios from 'axios';
 function* searchApi(action) {
   try {
     // get call to Google Books API with query from client
-    const response = yield axios.get('/api/search', {params: {search: action.payload}});
+    const response = yield axios.get('/api/book', {params: {search: action.payload}});
     // const response = yield axios.get('/api/search');
     // perform put to return data from server    
     yield put({type: 'SET_SEARCH_RESULTS', payload: response.data.items});
@@ -16,7 +16,7 @@ function* searchApi(action) {
 
 function* searchDatabase(action) {
   try {
-    const response = yield axios.get('/api/search/db', {params: {search: action.payload}});
+    const response = yield axios.get('/api/book/db', {params: {search: action.payload}});
     yield put({type: 'SET_DB_RESULTS', payload: response.data})
   } catch (error) {
     console.log('Error with DB get', error);

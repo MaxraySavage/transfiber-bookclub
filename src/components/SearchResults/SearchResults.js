@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 class SearchResults extends Component {
   
   componentDidMount(){
-    const queryString = this.props.history.location.pathname.split('/search/');
+    const queryString = this.props.history.location.pathname.split('/book/');
     const query = queryString[1];
     // search dispatch to API
     this.props.dispatch({type: 'SEARCH_API', payload: query});

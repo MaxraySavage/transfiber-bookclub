@@ -21,7 +21,7 @@ class SearchPage extends Component {
     console.log('search query on click:', this.state.query)
     const query = this.state.query
     // this.props.dispatch({type: 'SEARCH', payload: query})
-    this.props.history.replace(`/search/${query}`);
+    this.props.history.replace(`/book/${query}`);
     
   }
 
