@@ -9,14 +9,10 @@ import {
 import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import HomePage from '../HomePage/HomePage';
-// import AboutPage from '../AboutPage/AboutPage';
-// import UserPage from '../UserPage/UserPage';
-// import InfoPage from '../InfoPage/InfoPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import SearchResults from '../SearchResults/SearchResults';
@@ -74,7 +70,6 @@ class App extends Component {
             <Route render={() => <h1>404</h1>} />
           </Switch>
 
-          <Footer />
         </div>
       </Router>
   )}
