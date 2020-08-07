@@ -15,9 +15,21 @@ function* collectionSaga(action) {
   }
 }
 
+function* removeFromCollectionSaga(action) {
+  yield console.log(`removing book_id: ${action.payload} from collection`)
+  try {
+    // yield axios.delete('/api/collection/:id', {params: action.payload})
+    yield axios.delete('/api/collection/', {params: action.payload})
+
+  } catch (error) {
+    console.log('Error deleting from collection', error);
+  }
+}
+
 
 function* searchSaga() {
   yield takeLatest('FETCH_COLLECTION', collectionSaga);
+  yield takeLatest('REMOVE_FROM_COLLECTION', removeFromCollectionSaga)
 }
 
 export default searchSaga;
