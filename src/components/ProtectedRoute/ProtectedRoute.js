@@ -35,7 +35,7 @@ const ProtectedRoute = (props) => {
     // if they are not logged in, check the loginMode on Redux State
     // if the mode is 'login', show the LoginPage
     ComponentToShow = LoginPage;
-  } else {
+  } else if (loginMode === 'register') {
     // the the user is not logged in and the mode is not 'login'
     // show the RegisterPage
     ComponentToShow = RegisterPage;

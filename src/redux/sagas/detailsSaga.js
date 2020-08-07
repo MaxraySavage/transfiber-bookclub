@@ -6,7 +6,7 @@ function* getDetails(action) {
   try {
     // get call to Google Books API with query from client
     yield console.log('in getDetails:', action.payload)
-    const response = yield axios.get(`/api/search/details/${action.payload}`);
+    const response = yield axios.get(`/api/book/details/${action.payload}`);
 
     // perform put to return data from server    
     yield put({type: 'SET_RESULT_DETAILS', payload: response.data});

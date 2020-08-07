@@ -1,10 +1,10 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 // worker Saga: will be fired on "SEARCH" actions
 function* addBook(action) {
   try {
-    yield axios.post('/api/search', action.payload);
+    yield axios.post('/api/book', action.payload);
     // get call to Google Books API with query from client
     // const response = yield axios.get('/api/search', {params: {search: action.payload}});
     // const response = yield axios.get('/api/search');
@@ -18,6 +18,7 @@ function* addBook(action) {
 
 function* addBookSaga() {
   yield takeLatest('ADD_BOOK', addBook);
+  // yield takeLatest('ADD_TO_COLLECtiON', addToCollection)
 }
 
 export default addBookSaga;
