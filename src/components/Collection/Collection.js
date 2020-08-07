@@ -1,37 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import CollectionItem from '../CollectionItem/CollectionItem';
 
 class Collection extends Component {
-  
-  // componentDidMount(){
-  //   const queryString = this.props.history.location.pathname.split('/search/');
-  //   const query = queryString[1];
-  //   // search dispatch to API
-  //   this.props.dispatch({type: 'SEARCH_API', payload: query});
-  //   // search dispatch to Database
-  //   this.props.dispatch({type: 'SEARCH_DB', payload: query});
-  // }
 
-  // viewDetails = (event, data) => {
-  //   event.preventDefault();
-  //   console.log('viewDetails button clicked with book id:', data);
-  //   // this.props.dispatch({type: 'DETAILS', payload: data})
-  //   this.props.history.push(`/details/${data}`);
-  // }
+  componentDidMount(){
+    // dispatch to get collection for users
+    // this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.reduxState.user.id})
+    this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.user})
+  }
 
 
   render() {
     return (
       <div>
-        
+        <h1>Collection</h1>
+        {/* {JSON.stringify(this.props.collection)} */}
+        {this.props.collection.map((item)=>{
+          return (
+            <CollectionItem key={ item.id } book={ item }/>
+          )
+        })}
       </div>
     );
   }
 }
 
 const mapStateToProps = (reduxState) => ({
-  reduxState
+  user: reduxState.user.id,
+  collection: reduxState.collection
 });
 
 export default withRouter(connect(mapStateToProps)(Collection));

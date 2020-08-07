@@ -59,7 +59,7 @@ class App extends Component {
             <Route exact path="/home" component={HomePage}/>
             <Route path="/book/:id" component={SearchResults}/>
             <Route path="/details/:id" component={ResultDetails}/>
-            <ProtectedRoute path="/collection" component={Collection}/>
+            <ProtectedRoute exact path="/collection" component={Collection}/>
             <ProtectedRoute path="/form" component={AddBookForm}/>
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
