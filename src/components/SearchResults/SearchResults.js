@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 
 class SearchResults extends Component {
+  
   componentDidMount(){
     const queryString = this.props.history.location.pathname.split('/search/');
     const query = queryString[1];
@@ -21,8 +22,10 @@ class SearchResults extends Component {
   render() {
     return (
       <div>
-        Search Results:
-        If you can't find what you're looking for, <Link to="/form">Add A Book</Link>
+        {this.props.reduxState.user.username ?
+        <Link to="/form">Add A Book</Link>
+        : ''
+        }
         {/* {JSON.stringify(this.props.state.searchResults)} */}
         {this.props.reduxState.searchResults.map((book, index)=>{
           const item = book.volumeInfo

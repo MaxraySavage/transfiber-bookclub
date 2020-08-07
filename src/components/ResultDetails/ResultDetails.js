@@ -21,8 +21,9 @@ class ResultDetails extends Component {
         {book ? 
         <div>
           {book.imageLinks ? <img src={book.imageLinks.smallThumbnail} alt="thumbnail"></img> : ''}
-          {/* {JSON.stringify(book.imageLinks.smallThumbnail)} */}
-          {book.title}, {book.authors}, {book.publisher}, {book.publishedDate}, {book.description}, {book.pageCount}
+          {/* {JSON.stringify(this.props.state.resultDetails.id)} */}
+          {book.title}, {book.authors[0]}, {book.publisher}, {book.publishedDate}, {book.description}, {book.pageCount}
+          <button>Add to Collection</button>
         </div> 
         : ''
         }
