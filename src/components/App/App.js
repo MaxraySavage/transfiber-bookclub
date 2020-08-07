@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-// import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import HomePage from '../HomePage/HomePage';
 // import AboutPage from '../AboutPage/AboutPage';
@@ -57,7 +57,7 @@ class App extends Component {
             <Route exact path="/home" component={HomePage}/>
             <Route path="/search/:id" component={SearchResults}/>
             <Route path="/details/:id" component={ResultDetails}/>
-            <Route path="/form" component={AddBookForm}/>
+            <ProtectedRoute path="/form" component={AddBookForm}/>
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <Route exact path="/login" component={LoginPage}/>

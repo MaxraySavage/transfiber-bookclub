@@ -37,9 +37,6 @@ router.get('/details/:id', (req, res) => {
 /**
  * POST route template
  */
-// router.post('/', (req, res) => {
-//     console.log('====>posting:', req.body)
-// });
 router.post('/', (req, res) => {
     console.log('update attempt:', req.body)
     const queryText = `INSERT INTO "book" ("title", "author", "publisher", "publish_date", "description", "page_count", "img_url")

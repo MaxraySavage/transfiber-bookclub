@@ -22,21 +22,26 @@ class SearchResults extends Component {
   render() {
     return (
       <div>
+        {/* == Conditional render only shows Add A Book Link if user is signed in */}
         {this.props.reduxState.user.username ?
-        <Link to="/form">Add A Book</Link>
-        : ''
-        }
-        {/* {JSON.stringify(this.props.state.searchResults)} */}
+        <Link to="/form">Not finding what you're looking for? Add A Book</Link>
+        : ''}
+        {/* renders search results */}
         {this.props.reduxState.searchResults.map((book, index)=>{
+          // select expected data from object and assign to variable 'item'
           const item = book.volumeInfo
-           return <div key={index}>
-             {/* <p>{JSON.stringify(item)}</p> */}
-             <p>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}, {item.description}</p>
-             {/* Clicking this button navigates to the details page for the individual book item */}
-             <button onClick={ (event) => this.viewDetails(event, book.id) }>view details</button>
-             {/* <button><Link to="details">view details</Link></button> */}
-             {/* <Link to="/details/:id">Details for id number 47</Link> */}
-             </div>
+           return (
+              // RENDER DIV WITH BUTTON TO VIEW DETAILS
+              // <div key={index}>
+              // <p>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}, {item.description}</p>
+              // {/* Clicking this button navigates to the details page for the individual book item */}
+              // <button onClick={ (event) => this.viewDetails(event, book.id) }>view details</button>
+              // </div>
+              // RENDER RESULT AS LINK
+              <div key={index} onClick={ (event) => this.viewDetails(event, book.id) }>
+              <p>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}, {item.description}</p>
+              </div>
+            )
           })}
       </div>
     );
