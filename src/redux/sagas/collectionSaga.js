@@ -25,10 +25,32 @@ function* removeFromCollectionSaga(action) {
   }
 }
 
+function* markCompleteSaga(action) {
+  // yield console.log('markComplete:', action.payload)
+  try {
+    yield axios.put('/api/collection/complete/' + action.payload);
+    yield put({type: 'FETCH_COLLECTION'});
+  } catch (error) {
+    console.log('Error marking book as complete');
+  }
+}
+
+function* startOverSaga(action) {
+  // yield console.log('markComplete:', action.payload)
+  try {
+    yield axios.put('/api/collection/startover/' + action.payload);
+    yield put({type: 'FETCH_COLLECTION'});
+  } catch (error) {
+    console.log('Error marking book as not complete');
+  }
+}
+
 
 function* searchSaga() {
   yield takeLatest('FETCH_COLLECTION', collectionSaga);
-  yield takeLatest('REMOVE_FROM_COLLECTION', removeFromCollectionSaga)
+  yield takeLatest('REMOVE_FROM_COLLECTION', removeFromCollectionSaga);
+  yield takeLatest('MARK_COMPLETE', markCompleteSaga);
+  yield takeLatest('START_OVER', startOverSaga);
 }
 
 export default searchSaga;

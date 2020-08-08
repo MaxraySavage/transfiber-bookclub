@@ -43,10 +43,41 @@ router.delete('/:id', (req, res) => {
   pool.query(queryText, [req.params.id, req.user.id]).then( response => {
       res.sendStatus(200);
   }).catch( error => {
-      console.log( 'ERROR DELETING COLLECTION ITEM -------------->', error );
+      console.log( 'ERROR DELETING COLLECTION ITEM', error );
       res.sendStatus( 500 );
   })
 })
 
+router.put('/complete/:id', (req, res) => {
+  console.log('Marking as complete:', req.params)
+  const queryText = `UPDATE collection SET is_complete = TRUE WHERE book_id = $1 AND user_id = $2;`;
+  pool.query(queryText, [req.params.id, req.user.id]).then( response => {
+    res.sendStatus(200);
+  }).catch(error=>{
+    console.log('ERROR UPDATING BOOK ITEM', error);
+    res.sendStatus(500);
+  })
+}) 
+
+router.put('/startover/:id', (req, res) => {
+  console.log('Marking as not complete:', req.params)
+  const queryText = `UPDATE collection SET is_complete = FALSE WHERE book_id = $1 AND user_id = $2;`;
+  pool.query(queryText, [req.params.id, req.user.id]).then( response => {
+    res.sendStatus(200);
+  }).catch(error=>{
+    console.log('ERROR UPDATING BOOK ITEM', error);
+    res.sendStatus(500);
+  })
+}) 
+// router.put('/', (req, res) => {
+//   const queryText = `UPDATE movies SET description = $1 WHERE id = $2;`
+//   pool.query(queryText, [req.body[0], req.body[1]])
+//   .then(response => {
+//       res.sendStatus(200);
+//   }).catch( error => {
+//       console.log( 'ERROR UPDATING DESCRIPTION', error );
+//       res.sendStatus( 500 );
+//   })
+// })
 
 module.exports = router;
