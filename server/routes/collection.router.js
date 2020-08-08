@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   console.log('collection GET with user id:', req.user.id);
   const queryText = `SELECT * FROM "collection" JOIN book on collection.book_id = book.id WHERE user_id = $1;`
   pool.query(queryText, [req.user.id])
@@ -37,7 +38,7 @@ router.post('/', (req, res) => {
 //   })
 // })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   console.log('====>DELETE ROUTE', req.params, req.user )
   const queryText = 'DELETE FROM collection WHERE book_id=$1 AND user_id=$2;';
   pool.query(queryText, [req.params.id, req.user.id]).then( response => {
@@ -48,7 +49,7 @@ router.delete('/:id', (req, res) => {
   })
 })
 
-router.put('/complete/:id', (req, res) => {
+router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
   console.log('Marking as complete:', req.params)
   const queryText = `UPDATE collection SET is_complete = TRUE WHERE book_id = $1 AND user_id = $2;`;
   pool.query(queryText, [req.params.id, req.user.id]).then( response => {
@@ -59,7 +60,7 @@ router.put('/complete/:id', (req, res) => {
   })
 }) 
 
-router.put('/startover/:id', (req, res) => {
+router.put('/startover/:id', rejectUnauthenticated, (req, res) => {
   console.log('Marking as not complete:', req.params)
   const queryText = `UPDATE collection SET is_complete = FALSE WHERE book_id = $1 AND user_id = $2;`;
   pool.query(queryText, [req.params.id, req.user.id]).then( response => {
