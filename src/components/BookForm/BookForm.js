@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-class AddBookForm extends Component {
+class BookForm extends Component {
 
   state = {
     title: '',
@@ -88,4 +88,4 @@ const mapStateToProps = (reduxState) => ({
 });
 
 // this allows us to use <App /> in index.js
-export default withRouter(connect(mapStateToProps)(AddBookForm));
+export default withRouter(connect(mapStateToProps)(BookForm));

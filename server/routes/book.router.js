@@ -33,13 +33,23 @@ router.get('/details/:id', (req, res) => {
 // get results from database
 router.get('/db', (req, res) => {
     console.log('searching database with:', req.query.search);
-    const queryText = `SELECT * FROM book WHERE title=$1;`
+    const queryText = `SELECT * FROM book WHERE title=$1;`;
     pool.query(queryText, [req.query.search])
     .then(result => {
-        console.log('======>:', result.rows)
         res.send(result.rows);
     }).catch(error=>{
         console.log('Error getting from database', error);
+        res.sendStatus(500);
+    })
+})
+
+router.get('/details/db/:id', (req, res) => {
+    const queryText = `SELECT * FROM book WHERE id=$1;`;
+    pool.query(queryText, [req.params.id])
+    .then(result => {
+        res.send(result.rows);
+    }).catch(error=>{
+        console.log('Error getting item from database', error);
         res.sendStatus(500);
     })
 })

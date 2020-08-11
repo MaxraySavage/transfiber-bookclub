@@ -20,6 +20,13 @@ class SearchResults extends Component {
     this.props.history.push(`/details/${data}`);
   }
 
+  viewDbDetails = (event, data) => {
+    event.preventDefault();
+    console.log('viewDetails button clicked with book id:', data);
+    // this.props.dispatch({type: 'DETAILS', payload: data})
+    this.props.history.push(`/details/db/${data}`);
+  }
+
 
   render() {
     return (
@@ -28,21 +35,20 @@ class SearchResults extends Component {
         {this.props.reduxState.user.username ?
         <Link to="/form">Not finding what you're looking for? Add A Book</Link>
         : ''}
-        {JSON.stringify(this.props.reduxState.databaseResults)}
+        {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book)=>{
+          return (
+            <div key={book.id} onClick={(event)=>this.viewDbDetails(event, book.id)}>
+              <p>{book.title}, {book.author}, {book.publisher}, {book.publish_date}</p>
+            </div>
+          )
+        }) : ''}
         {/* renders search results */}
-        {this.props.reduxState.apiResults.map((book, index)=>{
+        {this.props.reduxState.apiResults.map((book)=>{
           // select expected data from object and assign to variable 'item'
           const item = book.volumeInfo
            return (
-              // RENDER DIV WITH BUTTON TO VIEW DETAILS
-              // <div key={index}>
-              // <p>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}, {item.description}</p>
-              // {/* Clicking this button navigates to the details page for the individual book item */}
-              // <button onClick={ (event) => this.viewDetails(event, book.id) }>view details</button>
-              // </div>
-              // RENDER RESULT AS LINK
-              <div key={index} onClick={ (event) => this.viewDetails(event, book.id) }>
-              <p>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}, {item.description}</p>
+              <div key={book.id} onClick={ (event) => this.viewDetails(event, book.id) }>
+              <p>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}</p>
               </div>
             )
           })}

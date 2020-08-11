@@ -16,7 +16,15 @@ class CollectionItem extends Component {
           {book.img_url ? <img src={book.img_url} alt="thumbnail"></img> : ''}
           {book.title ? book.title : ''}, {book.author}, {book.publisher}, {book.publishe_date}, {book.description ? book.description : 'N/A'}, {book.pageCount}
           <button onClick={this.removeFromCollection}>Remove</button>
-          {book.is_complete === false ? <button onClick={(event)=>{this.props.dispatch({type: 'MARK_COMPLETE', payload: book.book_id})}}>Mark as Complete</button> : <button onClick={(event)=>{this.props.dispatch({type: 'START_OVER', payload: book.book_id})}}>Start Over</button>}
+          {book.is_complete === false ? 
+          <button onClick={(event)=>{
+            this.props.dispatch({type: 'MARK_COMPLETE', payload: book.book_id})}}>
+              Mark as Complete
+          </button> : 
+          <button onClick={(event)=>{
+            this.props.dispatch({type: 'START_OVER', payload: book.book_id})}}>
+              Start Over
+          </button>}
       </div>
     );
   }

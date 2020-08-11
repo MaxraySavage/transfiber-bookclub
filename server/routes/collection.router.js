@@ -26,18 +26,6 @@ router.post('/', (req, res) => {
 
 });
 
-// delete route
-// router.delete('/', (req, res) => {
-//   // console.log('====>DELETE ROUTE', req.params )
-//   const queryText = 'DELETE FROM collection WHERE book_id=$1 AND user_id=$2;';
-//   pool.query(queryText, [req.query[0], req.query[1]]).then( result => {
-//       res.sendStatus(200);
-//   }).catch( error => {
-//       console.log( 'ERROR DELETING COLLECTION ITEM -------------->', error );
-//       res.sendStatus( 500 );
-//   })
-// })
-
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   console.log('====>DELETE ROUTE', req.params, req.user )
   const queryText = 'DELETE FROM collection WHERE book_id=$1 AND user_id=$2;';
