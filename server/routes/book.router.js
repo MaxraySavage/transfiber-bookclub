@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const {default: axios} = require('axios');
 
 // get results from the API
@@ -58,7 +59,7 @@ router.get('/details/db/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('update attempt:', req.body)
     const queryText = `WITH ins1 AS (
         INSERT INTO "book" ("api_id", "title", "author", "publisher", "publish_date", "description", "page_count", "img_url")

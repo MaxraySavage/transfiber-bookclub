@@ -1,0 +1,7 @@
+body {
+  background: rgb(255,241,249);
+  background: linear-gradient(90deg, rgba(255,241,249,1) 0%, rgba(247,245,255,1) 50%, rgba(226,255,250,1) 100%);}
+
+.welcome {
+  text-align: center;
+}

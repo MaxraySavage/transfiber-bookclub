@@ -6,32 +6,17 @@ import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
-    <Link to="/">
-      <h2 className="nav-title">Transfiber Bookclub</h2>
+    <Link to="/" className='text-link'>
+      <div className="nav-title">Transfiber Bookclub</div>
     </Link>
-    <div className="nav-right">
+    <div className="nav-views">
       <Link className="nav-link" to="/">
         Home
       </Link>
       <Link className="nav-link" to="/collection">
         Collection
       </Link>
-      {/* {props.user.id ? <LogOutButton/> : <Link className="nav-link" to="/login">Login</Link>} */}
-      {/* {props.user.id ? <LogOutButton/> : <Link className="nav-link" to="/login">Login</Link>} */}
       {props.user.id ? <Link className="nav-link" to="/" onClick={() => props.dispatch({ type: 'LOGOUT' })}> Log Out</Link> : <Link className="nav-link" to="/login">Login</Link>}
-      {/* Show the link to the info page and the logout button if the user is logged in */}
-      {/* {props.user.id && ( */}
-        {/* <> */}
-          {/* <Link className="nav-link" to="/info"> */}
-            {/* Info Page */}
-          {/* </Link> */}
-          {/* <LogOutButton className="nav-link"/> */}
-        {/* </> */}
-      {/* )} */}
-      {/* Always show this link since the about page is not protected */}
-      {/* <Link className="nav-link" to="/about"> */}
-        {/* About */}
-      {/* </Link> */}
     </div>
   </div>
 );

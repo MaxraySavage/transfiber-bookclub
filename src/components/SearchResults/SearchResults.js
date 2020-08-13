@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import SearchPage from '../SearchPage/SearchPage';
+import './SearchResults.css';
 
 class SearchResults extends Component {
   
@@ -33,11 +34,13 @@ class SearchResults extends Component {
     return (
       <div>
         {/* == Conditional render only shows Add A Book Link if user is signed in */}
+        <div className="search-header">
         Not finding what you're looking for?<br/>
         {this.props.reduxState.user.username ?
         <div><Link to="/form"> Add A Book</Link> or</div> 
         : ''}
-        Search again: <br/>
+        Search again:
+        </div>
         <SearchPage/>
         {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book)=>{
           return (
