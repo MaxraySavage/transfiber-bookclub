@@ -16,7 +16,9 @@ const Nav = (props) => (
       <Link className="nav-link" to="/collection">
         Collection
       </Link>
-      {props.user.id ? <LogOutButton className="nav-link"/> : <Link className="nav-link" to="/login">Login</Link>}
+      {/* {props.user.id ? <LogOutButton/> : <Link className="nav-link" to="/login">Login</Link>} */}
+      {/* {props.user.id ? <LogOutButton/> : <Link className="nav-link" to="/login">Login</Link>} */}
+      {props.user.id ? <Link className="nav-link" to="/" onClick={() => props.dispatch({ type: 'LOGOUT' })}> Log Out</Link> : <Link className="nav-link" to="/login">Login</Link>}
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {/* {props.user.id && ( */}
         {/* <> */}
