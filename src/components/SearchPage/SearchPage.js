@@ -22,13 +22,16 @@ class SearchPage extends Component {
     const query = this.state.query
     // this.props.dispatch({type: 'SEARCH', payload: query})
     this.props.history.replace(`/book/${query}`);
+    // search dispatch to API
+    this.props.dispatch({type: 'SEARCH_API', payload: query});
+    // search dispatch to Database
+    this.props.dispatch({type: 'SEARCH_DB', payload: query});
     
   }
 
   render() {
     return (
       <div>
-        <p>Input search here:</p>
         <input type="text" placeholder="search" onChange={this.handleChange}></input>
         <button onClick={this.handleClick}>Enter</button>
         {/* {this.props.state.searchResults.length > 0 ? <SearchResults/> : ''} */}

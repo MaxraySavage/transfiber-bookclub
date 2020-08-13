@@ -16,6 +16,7 @@ class HomePage extends Component {
         {/* <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
         <p>Your ID is: {this.props.user.id}</p>
         <LogOutButton className="log-in" /> */}
+        <p>Input search here:</p>
         <SearchPage/>
         {/* {this.props.state.searchResults.length > 0 ? <SearchResults/> : ''} */}
       </div>
