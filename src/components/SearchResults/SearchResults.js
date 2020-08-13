@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
+import SearchPage from '../SearchPage/SearchPage';
+import './SearchResults.css';
 
 class SearchResults extends Component {
   
-  componentDidMount(){
-    const queryString = this.props.history.location.pathname.split('/book/');
-    const query = queryString[1];
-    // search dispatch to API
-    this.props.dispatch({type: 'SEARCH_API', payload: query});
-    // search dispatch to Database
-    this.props.dispatch({type: 'SEARCH_DB', payload: query});
-  }
+  // componentDidMount(){
+  //   const queryString = this.props.history.location.pathname.split('/book/');
+  //   const query = queryString[1];
+  //   // search dispatch to API
+  //   this.props.dispatch({type: 'SEARCH_API', payload: query});
+  //   // search dispatch to Database
+  //   this.props.dispatch({type: 'SEARCH_DB', payload: query});
+  // }
 
   viewDetails = (event, data) => {
     event.preventDefault();
@@ -32,9 +34,14 @@ class SearchResults extends Component {
     return (
       <div>
         {/* == Conditional render only shows Add A Book Link if user is signed in */}
+        <div className="search-header">
+        Not finding what you're looking for?<br/>
         {this.props.reduxState.user.username ?
-        <Link to="/form">Not finding what you're looking for? Add A Book</Link>
+        <div><Link to="/form"> Add A Book</Link> or</div> 
         : ''}
+        Search again:
+        </div>
+        <SearchPage/>
         {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book)=>{
           return (
             <div key={book.id} onClick={(event)=>this.viewDbDetails(event, book.id)}>

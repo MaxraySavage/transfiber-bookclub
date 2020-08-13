@@ -10,14 +10,10 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        {/* {JSON.stringify(this.props.state.user)} */}
-        {this.props.state.user.username ? `Welcome back, ${this.props.state.user.username}` : <p>Welcome to the <i>Transfiber Bookclub</i>, you can search for book titles using the search bar below.</p>}
-        {/* <p>Welcome to the <i>Transfiber Bookclub</i>, you can search for book titles using the search bar below.</p> */}
-        {/* <h1 id="welcome">Welcome, {this.props.user.username}!</h1>
-        <p>Your ID is: {this.props.user.id}</p>
-        <LogOutButton className="log-in" /> */}
+        <div className="welcome">
+        {this.props.state.user.username ? <div className="loggedIn">Welcome back, {this.props.state.user.username}</div> : <div className="loggedOut">Welcome to the <i>Transfiber Bookclub</i>, you can search for book titles using the search bar below.</div>}
+      </div>
         <SearchPage/>
-        {/* {this.props.state.searchResults.length > 0 ? <SearchResults/> : ''} */}
       </div>
     );
   }

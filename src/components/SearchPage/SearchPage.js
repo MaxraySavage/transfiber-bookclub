@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import './SearchPage.css';
 
 // import SearchResults from '../SearchResults/SearchResults';
 
@@ -20,18 +21,19 @@ class SearchPage extends Component {
   handleClick = () => {
     console.log('search query on click:', this.state.query)
     const query = this.state.query
-    // this.props.dispatch({type: 'SEARCH', payload: query})
     this.props.history.replace(`/book/${query}`);
+    // search dispatch to API
+    this.props.dispatch({type: 'SEARCH_API', payload: query});
+    // search dispatch to Database
+    this.props.dispatch({type: 'SEARCH_DB', payload: query});
     
   }
 
   render() {
     return (
-      <div>
-        <p>Input search here:</p>
+      <div className="search-bar">
         <input type="text" placeholder="search" onChange={this.handleChange}></input>
         <button onClick={this.handleClick}>Enter</button>
-        {/* {this.props.state.searchResults.length > 0 ? <SearchResults/> : ''} */}
       </div>
     );
   }
