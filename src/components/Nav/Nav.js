@@ -13,6 +13,9 @@ const Nav = (props) => (
       <Link className="nav-link" to="/">
         Home
       </Link>
+      <Link className="nav-link" to="/community">
+        Community
+      </Link>
       <Link className="nav-link" to="/collection">
         Collection
       </Link>

@@ -19,6 +19,7 @@ import SearchResults from '../SearchResults/SearchResults';
 import ResultDetails from '../ResultDetails/ResultDetails';
 import BookForm from '../BookForm/BookForm';
 import Collection from '../Collection/Collection';
+import Community from '../Community/Community';
 
 
 import './App.css';
@@ -56,6 +57,7 @@ class App extends Component {
             <Route path="/book/:id" component={SearchResults}/>
             <Route path="/details/:id" component={ResultDetails}/>
             <ProtectedRoute exact path="/collection" component={Collection}/>
+            <ProtectedRoute exact path="/community" component={Community}/>
             <ProtectedRoute path="/form" component={BookForm}/>
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
