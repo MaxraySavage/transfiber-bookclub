@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import CollectionItem from '../CollectionItem/CollectionItem';
+import ComCollectionItem from '../ComCollectionItem/ComCollectionItem';
 
 class CommunityCollection extends Component {
 
@@ -24,7 +24,7 @@ class CommunityCollection extends Component {
         {/* {JSON.stringify(this.props.collection)} */}
         {this.props.collection.map((item)=>{
           return (
-            <CollectionItem key={ item.id } book={ item }/>
+            <ComCollectionItem key={ item.id } book={ item }/>
           )
         })}
       </div>
