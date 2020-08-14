@@ -6,6 +6,7 @@ import apiResults from './apiResultsReducer';
 import databaseResults from './databaseResultsReducer';
 import resultDetails from './resultDetailsReducer';
 import collection from './collectionReducer';
+import allUsers from './communityReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   databaseResults,
   resultDetails, // holds the id for the search result that the user is viewing details for
   collection,
+  allUsers,
 });
 
 export default rootReducer;
