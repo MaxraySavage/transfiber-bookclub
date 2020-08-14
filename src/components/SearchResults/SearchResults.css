@@ -1,3 +1,29 @@
 .search-header {
   text-align: center;
 }
+
+.search-result {
+  /* color: red; */
+  /* border: 1px solid red; */
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 33%;
+  margin-inline-end: 0px;
+}
+
+.search-result:hover {
+  color: #ef3368;
+  cursor: pointer;
+  font-style: italic;
+}
+
+.text-link {
+  text-decoration: underline;
+}
+
+.text-link:hover {
+  cursor: pointer;
+  color: #4574eb;
+}
+

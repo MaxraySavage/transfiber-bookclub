@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import parse from 'html-react-parser';
+
 
 class CollectionItem extends Component {
 
@@ -10,21 +12,34 @@ class CollectionItem extends Component {
   }
 
   render() {
-      const book = this.props.book
+    const book = this.props.book
     return (
-      <div>
-          {book.img_url ? <img src={book.img_url} alt="thumbnail"></img> : ''}
-          {book.title ? book.title : ''}, {book.author}, {book.publisher}, {book.publishe_date}, {book.description ? book.description : 'N/A'}, {book.pageCount}
-          <button onClick={this.removeFromCollection}>Remove</button>
-          {book.is_complete === false ? 
-          <button onClick={(event)=>{
-            this.props.dispatch({type: 'MARK_COMPLETE', payload: book.book_id})}}>
-              Mark as Complete
-          </button> : 
-          <button onClick={(event)=>{
+      <div className="book-details">
+        <div className="book-img">
+            {book.img_url ? <img src={book.img_url} alt="thumbnail"></img> : ''}
+        </div>
+        <div className="book-info">
+            <div className="book-title">
+                {book.title ? book.title : ''}
+            </div>
+            <div className="book-data">
+                {book.author}, {book.publisher}, {book.publishe_date}, {book.pageCount}
+            </div>
+            <div className="book-description">
+                {book.description ? parse(book.description) : 'N/A'}
+            </div>
+        </div>
+        <div className="collection-btn">
+            <button onClick={this.removeFromCollection}>&#8854;</button>
+            {book.is_complete === false ? 
+            <button id="btn" onClick={(event)=>{this.props.dispatch({type: 'MARK_COMPLETE', payload: book.book_id})}}>
+                &#10003;
+            </button> : 
+            <button id="btn" onClick={(event)=>{
             this.props.dispatch({type: 'START_OVER', payload: book.book_id})}}>
-              Start Over
+              &#8634;
           </button>}
+        </div>
       </div>
     );
   }

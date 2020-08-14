@@ -6,7 +6,7 @@ import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
-    <Link to="/" className='text-link'>
+    <Link to="/" className='title-link'>
       <div className="nav-title">Transfiber Bookclub</div>
     </Link>
     <div className="nav-views">

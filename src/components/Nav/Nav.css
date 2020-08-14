@@ -1,6 +1,7 @@
 .nav-title {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 32px;
+    font-style: italic;
+    /* font-weight: 700; */
     display: block;
     color: black;
     text-align: center;
@@ -8,15 +9,20 @@
     /* width: 50%; */
 }
 
-.text-link {
+.title-link {
     color: inherit;
     text-decoration: inherit;
+}
+
+.nav-title:hover {
+  color: #326bce;
 }
 
 .nav {
   overflow: hidden;
   /* display: inline-block; */
   text-align: center;
+  padding-top: 3rem;
 }
 
 .nav-link {
@@ -45,4 +51,6 @@
 .nav-views {
   text-align: center;
   display: inline-block;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }

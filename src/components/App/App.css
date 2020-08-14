@@ -1,7 +1,63 @@
 body {
   background: rgb(255,241,249);
-  background: linear-gradient(90deg, rgba(255,241,249,1) 0%, rgba(247,245,255,1) 50%, rgba(226,255,250,1) 100%);}
+  background: linear-gradient(90deg, rgba(255,241,249,1) 0%, rgba(247,245,255,1) 50%, rgba(226,255,250,1) 100%);
+  /* font-family: Helvetica, sans-serif; */
+}
+
 
 .welcome {
   text-align: center;
 }
+
+.go-back {
+  font-style: italic;
+  display: inline-block;
+  margin-left: 8.25%;
+}
+
+.go-back:hover {
+  font-style: normal;
+  cursor: pointer;
+  color: rgba(235, 186, 63, 0.804);
+}
+
+.book-details {
+  display: flex;
+  text-align: center;
+  /* border: 1px solid red; */
+  /* padding-left: 25%; */
+  margin-left: 16.5%;
+  margin-right: 16.5%;
+  padding-top: 2rem;
+
+}
+
+.book-info {
+  /* border: 1px solid orange; */
+  flex-grow: 1;
+  text-align: left;
+  margin-right: 1rem;
+  /* padding-right: 50%; */
+  /* float: right; */
+}
+
+.book-img {
+  /* border: 1px solid blue; */
+  width: 25%;
+  margin-right: 1rem;
+  /* float: left; */
+}
+
+.book-title {
+  font-size: 2rem;
+  font-style: bold;
+}
+
+.collection-btn {
+  /* border: 1px solid red; */
+  text-align: center;
+  display: inline-block;
+  margin-left: 45%;
+  padding: 2rem;
+}
+

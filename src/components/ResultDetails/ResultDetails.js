@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import parse from 'html-react-parser';
+// const BrowserHistory = require('react-router/lib/BrowserHistory').default;
 
 class ResultDetails extends Component {
 
@@ -32,34 +34,52 @@ class ResultDetails extends Component {
       publishedDate: book.publishedDate,
       description: book.description,
       pageCount: book.pageCount,
-      imgUrl: book.imageLinks.smallThumbnail,
+      imgUrl: book.imageLinks.thumbnail,
       user_id: this.props.state.user.id  
     }
     this.props.dispatch({type: 'ADD_BOOK', payload: bookToAdd})
+  }
 
-    // this.props.dispatch({type: 'ADD_TO_COLLECTION', payload: this.props.state.resultDetails.volumeInfo});
+  goBack = () => {
+      this.props.history.goBack();
   }
   
   render() {
     const book = this.props.state.resultDetails.volumeInfo
     return (
-      <div>
-        <h1>Search Result Details</h1>
-        {/* {JSON.stringify(this.props.state.resultDetails.volumeInfo)} */}
-        {/* {JSON.stringify(book)} */}
+        <>
+        {/* <h1>Search Result Details</h1> */}
+        <div className="go-back" onClick={this.goBack}>&#10229; back to search</div>
         {book ? 
-        <div>
-          {book.imageLinks ? <img src={book.imageLinks.smallThumbnail} alt="thumbnail"></img> : ''}
-          {/* {JSON.stringify(this.props.state.resultDetails.id)} */}
-          {book.title ? book.title : ''}, {book.authors[0]}, {book.publisher}, {book.publishedDate}, {book.description ? book.description : 'N/A'}, {book.pageCount}
-          {this.props.state.user.username ? <button onClick={this.postToCollection}>Add to Collection</button> : '' } 
-          {/* <button>Add to Collection</button> */}
-        </div> 
-        : ''
-        }
-        {/* <p>{book.title}, {book.authors}, {book.publisher}, {book.publishedDate}, {book.description}, {book.pageCount}</p>
-        <img src={book.imageLinks.smallThumbnail} alt="thumbnail"></img> */}
-      </div>
+            <>
+                <div className="book-details">
+                    <div className="book-img">
+                        {book.imageLinks ? <img src={book.imageLinks.thumbnail} alt="thumbnail" className="img-thumb"></img> : ''}
+                    </div>
+                    <div className="book-info">
+                        <div className="book-title">
+                            {book.title ? book.title : ''}
+                        </div>
+                        <div className="book-data">
+                            {book.authors[0]}, {book.publisher}, {book.publishedDate}, {book.pageCount}
+                        </div> 
+                        <div className="book-description">
+                            {book.description ? parse(book.description) : 'N/A'}
+                        </div>
+                        {/* <div className="collection-button">
+                            {this.props.state.user.username ? <button onClick={this.postToCollection}>Add to Collection</button> : '' }
+                        </div> */}
+                    </div>
+                </div>
+                {this.props.state.user.username ?
+                        <div className="collection-btn"> 
+                            {/* <label htmlFor="add">Add to Collection</label> */}
+                            <button id="btn" onClick={this.postToCollection}>Add to Collection</button>
+                        </div>  
+                        : '' }
+            </>
+        : ''}
+        </>
     );
   }
 }
