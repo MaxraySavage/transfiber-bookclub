@@ -4,10 +4,6 @@ import { withRouter } from 'react-router-dom';
 import ComCollectionItem from '../ComCollectionItem/ComCollectionItem';
 
 class CommunityCollection extends Component {
-
-  state = {
-    user: ''
-  }
   
 
   componentDidMount(){
@@ -20,7 +16,7 @@ class CommunityCollection extends Component {
   render() {
     return (
       <div>
-        <h1>CommunityCollection</h1>
+        <h3>::{JSON.stringify(this.props.users)}</h3>
         {/* {JSON.stringify(this.props.collection)} */}
         {this.props.collection.map((item)=>{
           return (
@@ -33,7 +29,8 @@ class CommunityCollection extends Component {
 }
 
 const mapStateToProps = (reduxState) => ({
-  collection: reduxState.collection
+  collection: reduxState.collection,
+  users: reduxState.allUsers,
 });
 
 export default withRouter(connect(mapStateToProps)(CommunityCollection));
