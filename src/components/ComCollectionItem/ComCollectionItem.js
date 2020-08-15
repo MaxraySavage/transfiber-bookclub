@@ -19,9 +19,14 @@ class ComCollectionItem extends Component {
             {book.img_url ? <img src={book.img_url} alt="thumbnail"></img> : ''}
         </div>
         <div className="book-info">
+          <div className="book-header">
             <div className="book-title">
-                {book.title ? book.title : ''}
+              {book.title ? book.title : ''}
             </div>
+            <div className="book-progress">
+              {book.is_complete ? 'Completed' : 'In Progress'}
+            </div>
+          </div>
             <div className="book-data">
                 {book.author}, {book.publisher}, {book.publishe_date}, {book.pageCount}
             </div>

@@ -22,10 +22,10 @@ class SearchPage extends Component {
     console.log('search query on click:', this.state.query)
     const query = this.state.query
     this.props.history.replace(`/book/${query}`);
-    // search dispatch to API
-    this.props.dispatch({type: 'SEARCH_API', payload: query});
-    // search dispatch to Database
-    this.props.dispatch({type: 'SEARCH_DB', payload: query});
+    // // search dispatch to API
+    // this.props.dispatch({type: 'SEARCH_API', payload: query});
+    // // search dispatch to Database
+    // this.props.dispatch({type: 'SEARCH_DB', payload: query});
     
   }
 

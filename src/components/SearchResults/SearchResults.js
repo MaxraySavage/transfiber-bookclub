@@ -14,6 +14,16 @@ class SearchResults extends Component {
   //   // search dispatch to Database
   //   this.props.dispatch({type: 'SEARCH_DB', payload: query});
   // }
+  componentDidMount(){
+    const queryString = this.props.history.location.pathname.split('/book/');
+    const query = queryString[1];
+    this.props.dispatch({type: 'CLEAR_RESULTS'});
+    // search dispatch to API
+    this.props.dispatch({type: 'SEARCH_API', payload: query});
+    // search dispatch to Database
+    this.props.dispatch({type: 'SEARCH_DB', payload: query});
+    
+  }
 
   viewDetails = (event, data) => {
     event.preventDefault();
@@ -42,19 +52,19 @@ class SearchResults extends Component {
         Search again:
         </div>
         <SearchPage/>
-        {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book)=>{
+        {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book, index)=>{
           return (
-            <div className="search-result" key={book.id} onClick={(event)=>this.viewDbDetails(event, book.id)}>
+            <div className="search-result" key={index} onClick={(event)=>this.viewDbDetails(event, book.id)}>
               {book.title}, {book.author}, {book.publisher}, {book.publish_date}
             </div>
           )
         }) : ''}
         {/* renders search results */}
-        {this.props.reduxState.apiResults.map((book)=>{
+        {this.props.reduxState.apiResults.map((book, index)=>{
           // select expected data from object and assign to variable 'item'
           const item = book.volumeInfo
            return (
-              <div className="search-result" key={book.id} onClick={ (event) => this.viewDetails(event, book.id) }>
+              <div className="search-result" key={index} onClick={ (event) => this.viewDetails(event, book.id) }>
               {item.title}, {item.authors}, {item.publisher}, {item.publishedDate}
               </div>
             )

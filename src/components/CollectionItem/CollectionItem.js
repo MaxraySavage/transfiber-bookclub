@@ -14,6 +14,7 @@ class CollectionItem extends Component {
   render() {
     const book = this.props.book
     return (
+      <>
       <div className="book-details">
         <div className="book-img">
             {book.img_url ? <img src={book.img_url} alt="thumbnail"></img> : ''}
@@ -29,18 +30,19 @@ class CollectionItem extends Component {
                 {book.description ? parse(book.description) : 'N/A'}
             </div>
         </div>
-        <div className="collection-btn">
-            <button onClick={this.removeFromCollection}>&#8854;</button>
+      </div>
+      <div className="collection-btn">
+            <button id="btn" onClick={this.removeFromCollection}>Remove</button>
             {book.is_complete === false ? 
             <button id="btn" onClick={(event)=>{this.props.dispatch({type: 'MARK_COMPLETE', payload: book.book_id})}}>
-                &#10003;
+                Mark as Completed
             </button> : 
             <button id="btn" onClick={(event)=>{
             this.props.dispatch({type: 'START_OVER', payload: book.book_id})}}>
-              &#8634;
+              Restart
           </button>}
         </div>
-      </div>
+      </>
     );
   }
 }
