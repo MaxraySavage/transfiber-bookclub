@@ -24,7 +24,7 @@ body {
 .book-details {
   display: flex;
   text-align: center;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   /* padding-left: 25%; */
   margin-left: 16.5%;
   margin-right: 16.5%;
@@ -41,6 +41,11 @@ body {
   /* float: right; */
 }
 
+.book-description {
+  border: 1px solid red;
+  width: 100%;
+}
+
 .book-img {
   /* border: 1px solid blue; */
   width: 25%;
@@ -54,7 +59,7 @@ body {
 }
 
 .collection-btn {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   text-align: center;
   display: inline-block;
   margin-left: 45%;
