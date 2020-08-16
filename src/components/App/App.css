@@ -24,7 +24,7 @@ body {
 .book-details {
   display: flex;
   text-align: center;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   /* padding-left: 25%; */
   margin-left: 16.5%;
   margin-right: 16.5%;
@@ -41,6 +41,10 @@ body {
   /* float: right; */
 }
 
+.book-description {
+  border: 1px solid red;
+}
+
 .book-img {
   /* border: 1px solid blue; */
   width: 25%;
@@ -48,16 +52,32 @@ body {
   /* float: left; */
 }
 
+.book-header {
+  border: 1px solid red;
+}
+
+.book-progress {
+  float: right;
+}
+
 .book-title {
   font-size: 2rem;
   font-style: bold;
+  /* float: left; */
+  /* border: 1px solid red; */
 }
+
 
 .collection-btn {
-  /* border: 1px solid red; */
+  font-size: 2rem;
+  border: 1px solid red;
   text-align: center;
   display: inline-block;
-  margin-left: 45%;
-  padding: 2rem;
+  margin-left: 47%;
+  padding-bottom: 2rem;
 }
 
+#btn {
+  font-size: 1rem;
+  /* font-weight: 700; */
+}

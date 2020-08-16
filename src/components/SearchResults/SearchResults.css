@@ -19,7 +19,19 @@
 }
 
 .text-link {
+  color: rgb(52, 33, 41);
+  text-decoration: none;
+}
+
+.add-link {
   text-decoration: underline;
+  color: rgb(52, 33, 41);
+}
+
+.add-link:hover {
+  font-style: oblique;
+  cursor: pointer;
+  color: red;
 }
 
 .text-link:hover {

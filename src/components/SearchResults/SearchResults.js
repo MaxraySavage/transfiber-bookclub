@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import SearchPage from '../SearchPage/SearchPage';
+// import ResultDetails from '../ResultDetails/ResultDetails';
 import './SearchResults.css';
 
 class SearchResults extends Component {
@@ -14,6 +15,16 @@ class SearchResults extends Component {
   //   // search dispatch to Database
   //   this.props.dispatch({type: 'SEARCH_DB', payload: query});
   // }
+  componentDidMount(){
+    const queryString = this.props.history.location.pathname.split('/book/');
+    const query = queryString[1];
+    this.props.dispatch({type: 'CLEAR_RESULTS'});
+    // search dispatch to API
+    this.props.dispatch({type: 'SEARCH_API', payload: query});
+    // search dispatch to Database
+    this.props.dispatch({type: 'SEARCH_DB', payload: query});
+    
+  }
 
   viewDetails = (event, data) => {
     event.preventDefault();
@@ -37,25 +48,31 @@ class SearchResults extends Component {
         <div className="search-header">
         Not finding what you're looking for?<br/>
         {this.props.reduxState.user.username ?
-        <div><Link className="text-link" to="/form"> Add A Book</Link> or</div> 
+        <div><Link className="add-link" to="/form"> Add A Book</Link> or</div> 
         : ''}
         Search again:
         </div>
         <SearchPage/>
-        {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book)=>{
+        {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book, index)=>{
           return (
-            <div className="search-result" key={book.id} onClick={(event)=>this.viewDbDetails(event, book.id)}>
-              {book.title}, {book.author}, {book.publisher}, {book.publish_date}
+            // <div className="search-result" key={index} onClick={(event)=>this.viewDbDetails(event, book.id)}>
+            //   {book.title}, {book.author}, {book.publisher}, {book.publish_date}
+            // </div>
+            <div className="search-result" key={index}>
+              <Link className="text-link" to="/details" onClick={() => this.props.dispatch({type: 'DETAILS', payload: book})}>{book.title}, {book.author}, {book.publisher}, {book.publish_date}</Link>
             </div>
           )
         }) : ''}
         {/* renders search results */}
-        {this.props.reduxState.apiResults.map((book)=>{
+        {this.props.reduxState.apiResults.map((book, index)=>{
           // select expected data from object and assign to variable 'item'
           const item = book.volumeInfo
            return (
-              <div className="search-result" key={book.id} onClick={ (event) => this.viewDetails(event, book.id) }>
-              {item.title}, {item.authors}, {item.publisher}, {item.publishedDate}
+              // <div className="search-result" key={index} onClick={ (event) => this.viewDetails(event, book.id) }>
+              // {item.title}, {item.authors}, {item.publisher}, {item.publishedDate}
+              // </div>
+              <div className="search-result" key={index}>
+                <Link className="text-link" to="/details" onClick={() => this.props.dispatch({type: 'DETAILS', payload: book})}>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}</Link>
               </div>
             )
           })}

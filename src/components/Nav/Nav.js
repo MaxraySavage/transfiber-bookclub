@@ -13,10 +13,17 @@ const Nav = (props) => (
       <Link className="nav-link" to="/">
         Home
       </Link>
-      <Link className="nav-link" to="/collection">
-        Collection
-      </Link>
-      {props.user.id ? <Link className="nav-link" to="/" onClick={() => props.dispatch({ type: 'LOGOUT' })}> Log Out</Link> : <Link className="nav-link" to="/login">Login</Link>}
+      {props.user.id ? 
+        <Link className="nav-link" to="/community">
+        Community
+        </Link>
+      : ''}
+      {props.user.id ? 
+        <Link className="nav-link" to="/collection">
+          Collection
+        </Link>
+      : ''}
+      {props.user.id ? <Link className="nav-link" to="/" onClick={() => props.dispatch({ type: 'LOGOUT' })}> Log Out</Link> : <Link className="nav-link" to="/login">Login/Register</Link>}
     </div>
   </div>
 );

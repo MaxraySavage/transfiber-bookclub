@@ -15,6 +15,19 @@ function* collectionSaga(action) {
   }
 }
 
+function* comCollectionSaga(action) {
+
+  // yield console.log('======>collectionSaga', action.payload)
+  try {
+    const response = yield axios.get('/api/community/collection', {params: {search: action.payload}});
+    // const response = yield axios.get('/api/search');
+    // perform put to return data from server    
+    yield put({type: 'SET_COLLECTION', payload: response.data});
+  } catch (error) {
+      console.log('Error with Collection get', error);
+  }
+}
+
 function* removeFromCollectionSaga(action) {
   // yield console.log(`removing book_id: ${action.payload} from collection`)
   try {
@@ -51,6 +64,7 @@ function* searchSaga() {
   yield takeLatest('REMOVE_FROM_COLLECTION', removeFromCollectionSaga);
   yield takeLatest('MARK_COMPLETE', markCompleteSaga);
   yield takeLatest('START_OVER', startOverSaga);
+  yield takeLatest('FETCH_COM_COLLECTION', comCollectionSaga)
 }
 
 export default searchSaga;
