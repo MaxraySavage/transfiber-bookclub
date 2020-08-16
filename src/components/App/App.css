@@ -5,7 +5,7 @@ body {
 }
 
 
-.welcome {
+.content {
   text-align: center;
 }
 
@@ -24,7 +24,6 @@ body {
 .book-details {
   display: flex;
   text-align: center;
-  border: 1px solid red;
   /* padding-left: 25%; */
   margin-left: 16.5%;
   margin-right: 16.5%;
@@ -32,8 +31,12 @@ body {
 
 }
 
-.book-info {
+.book {
   /* border: 1px solid orange; */
+  padding-bottom: 12%;
+}
+
+.book-info {
   flex-grow: 1;
   text-align: left;
   margin-right: 1rem;
@@ -41,43 +44,67 @@ body {
   /* float: right; */
 }
 
-.book-description {
-  border: 1px solid red;
-}
-
 .book-img {
-  /* border: 1px solid blue; */
   width: 25%;
   margin-right: 1rem;
   /* float: left; */
 }
 
-.book-header {
-  border: 1px solid red;
-}
-
 .book-progress {
   float: right;
+  font-weight: 700;
+  /* padding: 1rem; */
 }
 
 .book-title {
   font-size: 2rem;
   font-style: bold;
   /* float: left; */
-  /* border: 1px solid red; */
 }
 
+.book-author {
+  font-style: oblique;
+  padding-bottom: 1rem;
+}
+
+.book-data {
+  padding-bottom: 1rem;
+}
+
+.book-description {
+  text-indent: 2rem;
+}
+
+.book-description::first-letter {
+  font-size: 125%;
+  font-style: italic;
+}
 
 .collection-btn {
   font-size: 2rem;
-  border: 1px solid red;
   text-align: center;
-  display: inline-block;
-  margin-left: 47%;
+  display: block;
+  /* padding-left: 50%; */
+  /* padding-right: 50%; */
+  margin-top: 2rem;
+  margin-left: 33%;
+  margin-right: 33%;
   padding-bottom: 2rem;
 }
 
-#btn {
+.btn-update {
+  float: left;
   font-size: 1rem;
+  margin-right: 10%;
+}
+
+.btn-remove {
+  float: right;
+  font-size: 1rem;
+  margin-left: 10%;
   /* font-weight: 700; */
+}
+
+.in-progress {
+  color: rgb(80, 201, 80);
 }

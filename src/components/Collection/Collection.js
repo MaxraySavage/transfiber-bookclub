@@ -8,6 +8,7 @@ class Collection extends Component {
   componentDidMount(){
     // dispatch to get collection for users
     // this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.reduxState.user.id})
+    this.props.dispatch({type: 'CLEAR_COLLECTION'})
     this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.user})
   }
 
@@ -15,7 +16,7 @@ class Collection extends Component {
   render() {
     return (
       <div>
-        <h1>Collection</h1>
+        <div className="content">Your Collection</div>
         {/* {JSON.stringify(this.props.collection)} */}
         {this.props.collection.map((item)=>{
           return (

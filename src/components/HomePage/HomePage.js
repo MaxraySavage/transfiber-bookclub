@@ -10,7 +10,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <div className="welcome">
+        <div className="content">
         {this.props.state.user.username ? <div className="loggedIn">Welcome back, {this.props.state.user.username}</div> : <div className="loggedOut">Welcome to the <i>Transfiber Bookclub</i>, you can search for book titles using the search bar below.</div>}
       </div>
         <SearchPage/>

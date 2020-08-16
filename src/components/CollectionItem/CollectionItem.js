@@ -14,7 +14,7 @@ class CollectionItem extends Component {
   render() {
     const book = this.props.book
     return (
-      <>
+      <div className="book">
       <div className="book-details">
         <div className="book-img">
             {book.img_url ? <img src={book.img_url} alt="thumbnail"></img> : ''}
@@ -23,8 +23,11 @@ class CollectionItem extends Component {
             <div className="book-title">
                 {book.title ? book.title : ''}
             </div>
+            <div className="book-author">
+                {book.author}
+            </div>
             <div className="book-data">
-                {book.author}, {book.publisher}, {book.publishe_date}, {book.pageCount}
+                {book.publisher}<br/>{book.publish_date}<br/>{book.pageCount}
             </div>
             <div className="book-description">
                 {book.description ? parse(book.description) : 'N/A'}
@@ -32,17 +35,17 @@ class CollectionItem extends Component {
         </div>
       </div>
       <div className="collection-btn">
-            <button id="btn" onClick={this.removeFromCollection}>Remove</button>
             {book.is_complete === false ? 
-            <button id="btn" onClick={(event)=>{this.props.dispatch({type: 'MARK_COMPLETE', payload: book.book_id})}}>
+            <button className="btn-update" onClick={(event)=>{this.props.dispatch({type: 'MARK_COMPLETE', payload: book.book_id})}}>
                 Mark as Completed
             </button> : 
-            <button id="btn" onClick={(event)=>{
+            <button className="btn-update" onClick={(event)=>{
             this.props.dispatch({type: 'START_OVER', payload: book.book_id})}}>
               Restart
           </button>}
+            <button className="btn-remove" onClick={this.removeFromCollection}>Remove</button>
         </div>
-      </>
+      </div>
     );
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import './RegisterPage.css';
+
 
 class RegisterPage extends Component {
   state = {
@@ -18,6 +20,7 @@ class RegisterPage extends Component {
           password: this.state.password,
         },
       });
+      this.props.history.push('/');
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
     }
@@ -31,7 +34,7 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="register-page">
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"

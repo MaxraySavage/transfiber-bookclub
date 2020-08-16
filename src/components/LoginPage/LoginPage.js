@@ -19,7 +19,11 @@ class LoginPage extends Component {
           password: this.state.password,
         },
       });
-      this.props.history.replace('/');
+      this.setState({
+        username: '',
+        password: '',    
+      })
+      this.props.history.push('/');
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }

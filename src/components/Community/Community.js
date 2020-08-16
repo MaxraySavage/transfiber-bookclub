@@ -7,6 +7,22 @@ import { Link, withRouter } from 'react-router-dom';
 
 class Community extends Component {
 
+  state = {
+    userSearch: '' 
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    this.setState({
+      userSearch: event.target.value
+    })
+    console.log(event.target.value)
+  }
+
+  handleClick = (event) => {
+    this.props.dispatch({type: 'FETCH_USERS'})
+  }
+
   componentDidMount(){
     this.props.dispatch({type: 'FETCH_USERS'})
   }  
@@ -18,14 +34,21 @@ class Community extends Component {
 
     return (
       <div>
-        <h3>Community</h3>
+        <div className="content">Search for user:</div>
         {/* {JSON.stringify(this.props.state.allUsers)} */}
         {/* {JSON.stringify(this.props.state.user)} */}
-        {this.props.state.allUsers.map((item)=>{
-          return (
-          <Link key={item.id} username={item.username} className="nav-link" to={{pathname: '/community/collection/', search: `?sort=${item.id}`}}>{item.username}</Link>
-          )
-        })}
+        <div className="search-bar">
+        <input onChange={this.handleChange}></input>
+        <button onClick={this.handleClick}>Search</button>
+        </div>
+        <div>
+          {this.props.state.allUsers.map((item)=>{
+            if (item.username === this.state.userSearch){
+              return <Link key={item.id} className="nav-link" to={{pathname: '/community/collection/', search: `?sort=${item.id}`}}>{item.username}</Link>
+            } return ''
+          })}
+        </div>
+        
         {/* {JSON.stringify(this.props.state)} */}
         {/* <CommunityCollection/> */}
       </div>

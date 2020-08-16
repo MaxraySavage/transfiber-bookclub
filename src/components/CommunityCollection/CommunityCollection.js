@@ -11,15 +11,14 @@ class CommunityCollection extends Component {
   
 
   componentDidMount(){
-    // this.props.dispatch({type: 'FETCH_USERS'})
-
+    this.props.dispatch({type: 'FETCH_USERS'})
     const queryString = this.props.history.location.search.split('=');
     const query = Number(queryString[1]);
+    // this.props.dispatch({type: 'FETCH_USERS'})
+    this.props.dispatch({type: 'CLEAR_COLLECTION'})
     this.props.dispatch({ type: 'FETCH_COM_COLLECTION', payload: query })
-    // this.setState({
-    //   username: this.props.users[index].username
-    // })
-    // console.log('user:', this.props.users[index].username)
+   
+    // console.log(this.state)
     // dispatch to get collection for users
     // this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.reduxState.user.id})
     // this.props.dispatch({type: 'FETCH_COM_COLLECTION', payload: this.state.user})
@@ -28,14 +27,15 @@ class CommunityCollection extends Component {
 
 
   render() {
-    // const queryString = this.props.history.location.search.split('=');
-    // const query = Number(queryString[1]);
-    // const index = this.props.users.findIndex(i=>i.id === query)
-    // const user = this.props.users[index].username
-    // const index = this.props.users.findIndex(i=>i.id === query);
+    const queryString = this.props.history.location.search.split('=');
+    const query = Number(queryString[1]);
+    const index = this.props.users.findIndex(i=>i.id === query)
     return (
       <div>
-        <h3>'s Collection</h3>
+        <div className="content">
+          {this.props.users[index] ? <>{this.props.users[index].username}'s Collection</> : '' }
+        </div>
+        {/* <h1>{index}</h1> */}
         {/* {JSON.stringify(this.props.collection)} */}
         {/* {JSON.stringify(this.props.users)} */}
         {this.props.collection.map((item)=>{

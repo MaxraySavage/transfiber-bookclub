@@ -2,6 +2,9 @@ const collectionReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_COLLECTION':
       return action.payload;
+      case 'CLEAR_COLLECTION':
+        action.payload = []
+        return action.payload;
     default:
       return state;
   }
