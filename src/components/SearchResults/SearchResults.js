@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import SearchPage from '../SearchPage/SearchPage';
+// import ResultDetails from '../ResultDetails/ResultDetails';
 import './SearchResults.css';
 
 class SearchResults extends Component {
@@ -47,15 +48,18 @@ class SearchResults extends Component {
         <div className="search-header">
         Not finding what you're looking for?<br/>
         {this.props.reduxState.user.username ?
-        <div><Link className="text-link" to="/form"> Add A Book</Link> or</div> 
+        <div><Link className="add-link" to="/form"> Add A Book</Link> or</div> 
         : ''}
         Search again:
         </div>
         <SearchPage/>
         {this.props.reduxState.databaseResults ? this.props.reduxState.databaseResults.map((book, index)=>{
           return (
-            <div className="search-result" key={index} onClick={(event)=>this.viewDbDetails(event, book.id)}>
-              {book.title}, {book.author}, {book.publisher}, {book.publish_date}
+            // <div className="search-result" key={index} onClick={(event)=>this.viewDbDetails(event, book.id)}>
+            //   {book.title}, {book.author}, {book.publisher}, {book.publish_date}
+            // </div>
+            <div className="search-result" key={index}>
+              <Link className="text-link" to="/details" onClick={() => this.props.dispatch({type: 'DETAILS', payload: book})}>{book.title}, {book.author}, {book.publisher}, {book.publish_date}</Link>
             </div>
           )
         }) : ''}
@@ -64,8 +68,11 @@ class SearchResults extends Component {
           // select expected data from object and assign to variable 'item'
           const item = book.volumeInfo
            return (
-              <div className="search-result" key={index} onClick={ (event) => this.viewDetails(event, book.id) }>
-              {item.title}, {item.authors}, {item.publisher}, {item.publishedDate}
+              // <div className="search-result" key={index} onClick={ (event) => this.viewDetails(event, book.id) }>
+              // {item.title}, {item.authors}, {item.publisher}, {item.publishedDate}
+              // </div>
+              <div className="search-result" key={index}>
+                <Link className="text-link" to="/details" onClick={() => this.props.dispatch({type: 'DETAILS', payload: book})}>{item.title}, {item.authors}, {item.publisher}, {item.publishedDate}</Link>
               </div>
             )
           })}

@@ -26,7 +26,12 @@ class SearchPage extends Component {
     // this.props.dispatch({type: 'SEARCH_API', payload: query});
     // // search dispatch to Database
     // this.props.dispatch({type: 'SEARCH_DB', payload: query});
-    
+    this.props.dispatch({type: 'CLEAR_RESULTS'});
+    // search dispatch to API
+    this.props.dispatch({type: 'SEARCH_API', payload: query});
+    // search dispatch to Database
+    this.props.dispatch({type: 'SEARCH_DB', payload: query});
+
   }
 
   render() {

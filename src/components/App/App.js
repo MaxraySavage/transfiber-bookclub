@@ -56,7 +56,7 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <Route exact path="/home" component={HomePage}/>
             <Route path="/book/:id" component={SearchResults}/>
-            <Route path="/details/:id" component={ResultDetails}/>
+            <Route path="/details/" component={ResultDetails}/>
             <ProtectedRoute exact path="/collection" component={Collection}/>
             <ProtectedRoute exact path="/community" component={Community}/>
             <ProtectedRoute exact path="/community/collection" component={CommunityCollection}/>
