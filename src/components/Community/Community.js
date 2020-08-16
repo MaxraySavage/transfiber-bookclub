@@ -44,7 +44,7 @@ class Community extends Component {
         <div>
           {this.props.state.allUsers.map((item)=>{
             if (item.username === this.state.userSearch){
-              return <Link key={item.id} className="nav-link" to={{pathname: '/community/collection/', search: `?sort=${item.id}`}}>{item.username}</Link>
+              return <Link key={item.id} className="user-result" to={{pathname: '/community/collection/', search: `?sort=${item.id}`}}>{item.username}</Link>
             } return ''
           })}
         </div>

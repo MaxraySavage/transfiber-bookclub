@@ -108,3 +108,16 @@ body {
 .in-progress {
   color: rgb(80, 201, 80);
 }
+
+.user-result {
+  /* border: 1px solid red; */
+  text-decoration: none;
+  color: black;
+  margin-left: 50%;
+}
+
+.user-result:hover {
+  cursor: pointer;
+  color: #ef3368;
+
+}
