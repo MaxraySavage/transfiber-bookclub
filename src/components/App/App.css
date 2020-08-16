@@ -1,7 +1,11 @@
 body {
   background: rgb(255,241,249);
-  background: linear-gradient(90deg, rgba(255,241,249,1) 0%, rgba(247,245,255,1) 50%, rgba(226,255,250,1) 100%);
+  background: linear-gradient(90deg, rgba(255, 219, 239, 0.482) 0%, rgba(206, 194, 255, 0.352) 50%, rgba(226,255,250,1) 100%);
   /* font-family: Helvetica, sans-serif; */
+  /* background: rgb(255,119,119); */
+  /* background: linear-gradient(0deg, rgba(255,119,119,1) 0%, rgba(216,221,121,1) 17%, rgba(113,223,130,1) 37%, rgba(145,204,214,1) 50%, rgba(188,192,228,1) 63%, rgba(227,214,227,1) 81%, rgba(250,243,243,1) 100%); */
+  /* background: rgb(255,119,119); */
+  /* background: linear-gradient(74deg, rgba(255,119,119,1) 0%, rgba(216,221,121,1) 17%, rgba(113,223,130,1) 37%, rgba(145,204,214,1) 50%, rgba(188,192,228,1) 63%, rgba(227,214,227,1) 81%, rgba(250,243,243,1) 100%); */
 }
 
 

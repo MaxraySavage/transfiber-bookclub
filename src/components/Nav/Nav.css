@@ -1,12 +1,13 @@
 .nav-title {
+    border: 1px solid red;
     font-size: 32px;
     font-style: italic;
     /* font-weight: 700; */
-    display: block;
+    display: inline-block;
     color: black;
     text-align: center;
     margin: auto;
-    /* width: 50%; */
+    width: 0%;
 }
 
 .title-link {
@@ -16,6 +17,7 @@
 
 .nav-title:hover {
   color: #326bce;
+  font-style: normal;
 }
 
 .nav {
@@ -24,6 +26,7 @@
   text-align: center;
   padding-top: 3rem;
 }
+
 
 .nav-link {
   float: left;

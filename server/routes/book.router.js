@@ -7,7 +7,7 @@ const {default: axios} = require('axios');
 // get results from the API
 router.get('/', (req, res) => {
   console.log('hit server with:', req.query);
-  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.search}&key=${process.env.GOOGLE_API_KEY}&maxResults=4vb0`)
+  axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.query.search}&key=${process.env.GOOGLE_API_KEY}&maxResults=40`)
       .then((response)=>{
           // console.log('sending back:', response.data)
           res.send(response.data);

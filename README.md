@@ -1,115 +1,61 @@
-# Prime Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+# Transfiber Bookclub
 
-## Download (Don't Clone) This Repository
+## Description
 
-* Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
-* Unzip the project and start with the code in that folder.
-* Create a new GitHub project and push this code to the new repository.
+_Duration: 2 Weeks ~ 5 hours per week day_
 
-## Prerequisites
+The aim of this project was to create a CRUD (Create, Read, Update, Delete) app that would allow me to keep track of what books I'm reading and to see what books my friends are reading. The idea came from a weekend spent with a good friend -- we had so many things to share with so little time so we set an intention to keep track of things to share with each other.
+The app needed a library of books to search through, a way to add a book to a collection, a way to update the status of a collected book, and an ability to see other user's collections. The Google Books API made it easy to access a library of books, but learning more complex database queries to create user collections was one of the largest challenges of the project. This was solved by performing multiple inserts in a query and returning data from the former insert into the latter. 
 
-Before you get started, make sure you have the following software installed on your computer:
+## Screen Shot
+![Search-View](wireframes/search.png)
+![User-Collection](wireframes/collection.png)
+![User-Search](wireframes/user-search.png)
+![Community-Collection](wireframes/community-collection.png)
+
+### Prerequisites
+
+Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+- software for SQL database
+- 
 
-## Create database and table
-
-Create a new database called `prime_app` and create a `user` table:
-
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
-
-## Development Setup Instructions
-
-* Run `npm install`
-* Create a `.env` file at the root of the project and paste this line into the file:
-    ```
-    SERVER_SESSION_SECRET=superDuperSecret
-    ```
-    While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run server`
-* Run `npm run client`
-* Navigate to `localhost:3000`
-
-## Debugging
-
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
-
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
-
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+## Installation
 
 
-## Testing Routes with Postman
+If your application has secret keys (for example --  Twilio), make sure you tell them how to set that up, both in getting the key and then what to call it in the `.env` file.
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum. 
+1. Create a Secret Key preferrably with a 16-key password generator and store in a .env file under the variable name SERVER_SESSION_SECRET.
+2. Connect a Google Book API key to variable GOOGLE_API_KEY
+3. Create a database called `transfiber_bookclub`,
+4. Then run the queries in the database.sql file
+5. Open up the project in your edition and run an `npm install`
+6. Run `npm run server` in your terminal
+7. Run `npm run client` in your terminal
+8. The `npm run client` command will open up a new browser tab for you!
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
+## Usage
+When using the app when not logged in, you can:
+1. Login or Register with a user
+2. View home page and search for books
+3. View book details by clicking on search result text
 
-1. Start the server - `npm run server`
-2. [Import the sample routes JSON file](./PostmanPrimeSoloRoutes.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-    1. `POST /api/user/register` registers a new user, see body to change username/password
-    2. `POST /api/user/login` will login a user, see body to change username/password
-    3. `GET /api/user` will get user information, by default it's not very much
+When the user has registered or is logged in:
+1. The user can search for books on the home page
+2. By clicking search result text, the user can view the book details
+3. The book details view will have button for the user to Add to Collection
+4. The user can view books in the their collection by clicking the Collection link in the Nav bar.
+5. On the Collection view, the user can remove a book from their Collection or Mark as Completed with their respective buttons.
+6. The Community link in the Nav bar navigates the user to another search bar where the user can search for other users by username.
+7. If the user search returns a match, it will be displayed with a link where the user can view the selected user's collection and whether they have Completed or are In Progress with the book.
+8. When the user is finished using the app, they can use the Logout link in the Nav bar to sign out.
 
-After running the login route above, you can try any other route you've created that requires a logged in user!
 
+## Built With
 
-## Production Build
+React, Redux, Node, Express, & styled with CSS.
 
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm start`
-* Navigate to `localhost:5000`
-
-## Lay of the Land
-
-* `src/` contains the React application
-* `public/` contains static assets for the client-side
-* `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-* `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-* src/components
-  * App/App
-  * Footer/Footer
-  * Nav/Nav
-  * AboutPage/AboutPage
-  * InfoPage/InfoPage
-  * UserPage/UserPage
-  * LoginPage/LoginPage
-  * RegisterPage/RegisterPage
-  * LogOutButton/LogOutButton
-  * ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+## Acknowledgement
+Shout out [Prime Digital Academy](www.primeacademy.io) for equipping me with the skills to learn these technologies as well as my friends and family for supporting me on these long journeys with the computer!
