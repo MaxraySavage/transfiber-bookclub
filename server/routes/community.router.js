@@ -3,22 +3,6 @@ const pool = require('../modules/pool');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
-/**
- * GET route template
- */
-// router.get('/', rejectUnauthenticated, (req, res) => {
-//   console.log('collection GET with user id:', req.user.id);
-//   const queryText = `SELECT * FROM "collection" JOIN book on collection.book_id = book.id WHERE user_id = $1;`
-//   pool.query(queryText, [req.user.id])
-//   .then(result => {
-//       // console.log('======>:', result.rows)
-//       res.send(result.rows);
-//   }).catch(error=>{
-//       console.log('Error getting from database', error);
-//       res.sendStatus(500);
-//   })
-// })
-
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `SELECT id, username FROM "user";`
   pool.query(queryText)
@@ -48,39 +32,6 @@ router.get('/collection', rejectUnauthenticated, (req, res) => {
  */
 router.post('/', (req, res) => {
 
-});
-
-// router.delete('/:id', rejectUnauthenticated, (req, res) => {
-//   console.log('====>DELETE ROUTE', req.params, req.user )
-//   const queryText = 'DELETE FROM collection WHERE book_id=$1 AND user_id=$2;';
-//   pool.query(queryText, [req.params.id, req.user.id]).then( response => {
-//       res.sendStatus(200);
-//   }).catch( error => {
-//       console.log( 'ERROR DELETING COLLECTION ITEM', error );
-//       res.sendStatus( 500 );
-//   })
-// })
-
-// router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
-//   console.log('Marking as complete:', req.params)
-//   const queryText = `UPDATE collection SET is_complete = TRUE WHERE book_id = $1 AND user_id = $2;`;
-//   pool.query(queryText, [req.params.id, req.user.id]).then( response => {
-//     res.sendStatus(200);
-//   }).catch(error=>{
-//     console.log('ERROR UPDATING BOOK ITEM', error);
-//     res.sendStatus(500);
-//   })
-// }) 
-
-// router.put('/startover/:id', rejectUnauthenticated, (req, res) => {
-//   console.log('Marking as not complete:', req.params)
-//   const queryText = `UPDATE collection SET is_complete = FALSE WHERE book_id = $1 AND user_id = $2;`;
-//   pool.query(queryText, [req.params.id, req.user.id]).then( response => {
-//     res.sendStatus(200);
-//   }).catch(error=>{
-//     console.log('ERROR UPDATING BOOK ITEM', error);
-//     res.sendStatus(500);
-//   })
-// }) 
+}); 
 
 module.exports = router;

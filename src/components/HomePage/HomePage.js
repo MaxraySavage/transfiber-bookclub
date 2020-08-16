@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchPage from '../SearchPage/SearchPage';
-// import SearchResults from '../SearchResults/SearchResults';
 import { withRouter } from 'react-router-dom';
 
 class HomePage extends Component {

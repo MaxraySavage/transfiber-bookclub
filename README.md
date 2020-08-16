@@ -20,7 +20,7 @@ Link to software that is required to install the app (e.g. node).
 
 - [Node.js](https://nodejs.org/en/)
 - software for SQL database
-- 
+
 
 ## Installation
 
@@ -29,8 +29,8 @@ If your application has secret keys (for example --  Twilio), make sure you tell
 
 1. Create a Secret Key preferrably with a 16-key password generator and store in a .env file under the variable name SERVER_SESSION_SECRET.
 2. Connect a Google Book API key to variable GOOGLE_API_KEY
-3. Create a database called `transfiber_bookclub`,
-4. Then run the queries in the database.sql file
+3. Create a database called `transfiber_bookclub`
+4. Then run the queries in the `database.sql` file
 5. Open up the project in your edition and run an `npm install`
 6. Run `npm run server` in your terminal
 7. Run `npm run client` in your terminal

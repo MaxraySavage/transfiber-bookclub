@@ -13,6 +13,7 @@ class BookForm extends Component {
     pageCount: '',
     imgUrl: ''
   }
+  
   handleChange = (propertyName) => (event) => {
     event.preventDefault();
     console.log(`form input for ${propertyName}: ${event.target.value}`)

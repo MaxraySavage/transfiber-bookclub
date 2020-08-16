@@ -14,15 +14,8 @@ class CommunityCollection extends Component {
     this.props.dispatch({type: 'FETCH_USERS'})
     const queryString = this.props.history.location.search.split('=');
     const query = Number(queryString[1]);
-    // this.props.dispatch({type: 'FETCH_USERS'})
     this.props.dispatch({type: 'CLEAR_COLLECTION'})
     this.props.dispatch({ type: 'FETCH_COM_COLLECTION', payload: query })
-   
-    // console.log(this.state)
-    // dispatch to get collection for users
-    // this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.reduxState.user.id})
-    // this.props.dispatch({type: 'FETCH_COM_COLLECTION', payload: this.state.user})
-    // console.log('showing user id:', this.userId)
   }
 
 
@@ -35,9 +28,6 @@ class CommunityCollection extends Component {
         <div className="content">
           {this.props.users[index] ? <>{this.props.users[index].username}'s Collection</> : '' }
         </div>
-        {/* <h1>{index}</h1> */}
-        {/* {JSON.stringify(this.props.collection)} */}
-        {/* {JSON.stringify(this.props.users)} */}
         {this.props.collection.map((item)=>{
           return (
             <ComCollectionItem key={ item.id } book={ item }/>

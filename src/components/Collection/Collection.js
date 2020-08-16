@@ -6,9 +6,8 @@ import CollectionItem from '../CollectionItem/CollectionItem';
 class Collection extends Component {
 
   componentDidMount(){
-    // dispatch to get collection for users
-    // this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.reduxState.user.id})
     this.props.dispatch({type: 'CLEAR_COLLECTION'})
+    // dispatch to get collection for users
     this.props.dispatch({type: 'FETCH_COLLECTION', payload: this.props.user})
   }
 

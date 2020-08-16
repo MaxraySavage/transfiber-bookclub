@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import './SearchPage.css';
 
-// import SearchResults from '../SearchResults/SearchResults';
-
 class SearchPage extends Component {
   
   state = {
@@ -22,16 +20,11 @@ class SearchPage extends Component {
     console.log('search query on click:', this.state.query)
     const query = this.state.query
     this.props.history.replace(`/book/${query}`);
-    // // search dispatch to API
-    // this.props.dispatch({type: 'SEARCH_API', payload: query});
-    // // search dispatch to Database
-    // this.props.dispatch({type: 'SEARCH_DB', payload: query});
     this.props.dispatch({type: 'CLEAR_RESULTS'});
     // search dispatch to API
     this.props.dispatch({type: 'SEARCH_API', payload: query});
     // search dispatch to Database
     this.props.dispatch({type: 'SEARCH_DB', payload: query});
-
   }
 
   render() {
